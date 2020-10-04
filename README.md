@@ -4,8 +4,6 @@ Tarefas é um aplicativo mobile desenvolvido em Flutter para gerenciar o cadastr
 
 ## Instalação
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ```bash
 flutter pub get
 flutter pub run build_runner build --delete-conflicting-outputs
