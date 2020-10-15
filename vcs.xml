@@ -6,7 +6,12 @@
           <option name="url" value="http://github.com" />
           <option name="userName" value="washington.oliveira.san@gmail.com" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/WashingtonGreed/tarefas" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
+    <option name="cloneParentDir" value="C:\Users\Washington\IdeaProjects" />
   </component>
 </application>
