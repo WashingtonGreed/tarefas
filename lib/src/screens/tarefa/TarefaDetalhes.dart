@@ -45,10 +45,10 @@ class _TarefaDetalhesState extends State<TarefaDetalhes> {
   }
 
 
-@override
-void dispose() {
-  super.dispose();
-}
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,33 +91,37 @@ void dispose() {
                   children: <Widget>[
                     Expanded(
                         child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: "Data de Entrega",
-                          hintText: "Data de Entrega"),
-                      readOnly: true,
-                      controller: _dataEntregaController,
-                      onTap: () async {
-                        DateTime date = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now().add(Duration(days: 1)),
-                            firstDate: DateTime(1920),
-                            lastDate: DateTime(2030));
-                        if (date != null) {
-                          final df = new DateFormat('dd/MM/yyyy');
-                          _dataEntregaController.text = df.format(date);
-                        }
-                      },
-                    )),
-                    
-                    _dataConclusaoController.text != "" ? SizedBox(width: 50.0) : SizedBox(width: 200.0),
+                          decoration: InputDecoration(
+                              labelText: "Data de Entrega",
+                              hintText: "Data de Entrega"),
+                          readOnly: true,
+                          controller: _dataEntregaController,
+                          validator: (value){
+                            return value.isEmpty ? "Escolha uma data de Entrega" : null;
+                          },
+                          onTap: () async {
+                            if(!widget.visualizar){
+                            DateTime date = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now().add(Duration(days: 1)),
+                                firstDate: DateTime(1920),
+                                lastDate: DateTime(2030));
+                            if (date != null) {
+                              final df = new DateFormat('dd/MM/yyyy');
+                              _dataEntregaController.text = df.format(date);
+                            }
+                          }},
+                        )),
+
+                    _dataConclusaoController.text != "" ? SizedBox(width: 20.0) : Container(),
                     
                     _dataConclusaoController.text != "" ? Expanded(
                         child: TextFormField(
+                          readOnly: true,
                             decoration: InputDecoration(
                                 labelText: "Data conclusão",
                                 hintText: "Data conclusão"),
                             controller: _dataConclusaoController)) : Container(),
-                    
                   ],
                 ),
                 SizedBox(height: 20.0),
@@ -161,7 +165,7 @@ void dispose() {
     _tarefa.idUsuario = widget.usuario.id;
 
     alertLoading(texto: "Salvando Tarefa...");
-    
+
 
     if (widget.tarefa != null) {
       _tarefa.id = widget.tarefa.id;

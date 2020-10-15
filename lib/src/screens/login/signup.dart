@@ -33,23 +33,24 @@ final df = new DateFormat('dd/MM/yyyy');
 GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
 class _SignupState extends State<Signup> {
-  @override
 
- @override
- void dispose() {
-   _nomeController.clear();
-   _emailController.clear();
-   _dataNascimentoController.clear();
-   _estadoController.clear();
-   _cidadeController.clear();
-   _bairroController.clear();
-   _ruaController.clear();
-   _senhaController.clear();
-   _numeroController.clear();
-   _cpfController.clear();
-   _cepController.clear();
-   super.dispose();
- }
+  @override
+  void dispose() {
+    _nomeController.clear();
+    _emailController.clear();
+    _dataNascimentoController.clear();
+    _estadoController.clear();
+    _cidadeController.clear();
+    _bairroController.clear();
+    _ruaController.clear();
+    _senhaController.clear();
+    _numeroController.clear();
+    _cpfController.clear();
+    _cepController.clear();
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -278,8 +279,8 @@ String validadorSenha(String value, String textValidator) {
 }
 
 String validadorCpf(String value, String textValidator) {
-  if (value.isNotEmpty && value.length < 14 && !CPF.isValid(value)) {
-    return textValidator;
+  if (value.isNotEmpty) {
+    return CPF.isValid(value) ? null : textValidator;
   } else {
     return null;
   }
