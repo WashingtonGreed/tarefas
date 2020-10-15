@@ -34,16 +34,22 @@ GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
 class _SignupState extends State<Signup> {
   @override
-  void initState() {
-    super.initState();
 
-    _emailController.text = "";
-    _dataNascimentoController.text = "";
-    _cepController.text = "";
-    _numeroController.text = "";
-    _nomeController.text = "";
-    _cpfController.text = "";
-  }
+ @override
+ void dispose() {
+   _nomeController.clear();
+   _emailController.clear();
+   _dataNascimentoController.clear();
+   _estadoController.clear();
+   _cidadeController.clear();
+   _bairroController.clear();
+   _ruaController.clear();
+   _senhaController.clear();
+   _numeroController.clear();
+   _cpfController.clear();
+   _cepController.clear();
+   super.dispose();
+ }
 
   @override
   Widget build(BuildContext context) {

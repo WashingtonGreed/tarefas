@@ -19,6 +19,14 @@ TextEditingController emailController = TextEditingController();
 TextEditingController senhaController = TextEditingController();
 
 class _LoginState extends State<Login> {
+
+@override
+ void dispose() {
+   emailController.clear();
+   senhaController.clear();
+   super.dispose();
+ }
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final formKey = new GlobalKey<FormState>();
